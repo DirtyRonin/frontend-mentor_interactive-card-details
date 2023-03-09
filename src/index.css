@@ -4,7 +4,12 @@
 
 @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500&display=swap');
 
+:focus {
+  outline: none;
+}
+
 html {
+  display: grid;
   height: 100%;
   width: 100%;
   font-size: 18px;
@@ -13,4 +18,8 @@ html {
 
 body {
   margin: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: black;
 }
