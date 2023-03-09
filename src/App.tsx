@@ -1,17 +1,17 @@
-import React from 'react';
-import './App.css';
+import './App.css'
+import { InteractiveCard } from './components/interactive-card'
 
 function App() {
   return (
     <>
-      <header>
-        <div className='text-3xl w-2 h-4 bg-indigo-500'>Header</div>{' '}
-      </header>
+      <header></header>
       <nav></nav>
-      <main></main>
+      <main>
+        <InteractiveCard />
+      </main>
       <footer></footer>
     </>
-  );
+  )
 }
 
-export default App;
+export default App
