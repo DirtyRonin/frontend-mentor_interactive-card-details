@@ -1,5 +1,5 @@
 import React from 'react'
-import { ValidationField } from '../interactive-card'
+import { ValidationField } from '../models/validation-field'
 
 export function CardInput({
   validationField: { name, value, isValid, error },
