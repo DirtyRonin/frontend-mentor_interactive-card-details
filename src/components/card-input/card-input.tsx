@@ -15,7 +15,7 @@ export function CardInput({
   label: string
 }) {
   return (
-    <label className='uppercase'>
+    <label className='uppercase lg:text-xs text-label-mobile text-very-dark-violet tracking-widest font-medium'>
       {label}
       <input
         value={formatDisplay ? formatDisplay(value) : value}
@@ -23,10 +23,10 @@ export function CardInput({
         id={name}
         onChange={onChange}
         placeholder={placeholder}
-        className={`w-full px-4 py-2 border rounded-lg text-dark-grayish-violet focus:ring ${
+        className={`w-full mt-1 px-4 py-2 border rounded-lg text-base ${
           !isValid
-            ? 'focus:ring-input-error border-input-error'
-            : 'focus:ring-light-grayish-violet border-light-grayish-violet'
+            ? ' border-input-error'
+            : ' focus:border-very-dark-violet border-light-grayish-violet'
         }`}></input>
       {!isValid ? (
         <p className='mt-2  text-input-error text-xxs'>{error}</p>

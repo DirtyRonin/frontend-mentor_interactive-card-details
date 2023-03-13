@@ -1,5 +1,5 @@
 import React from 'react'
-import { StateKey } from '../components/models/state-key'
+import { fields, StateKey } from '../components/models/state-key'
 import { ValidationField } from '../components/models/validation-field'
 import { trimFullString } from '../utils/stringHelper'
 
@@ -9,6 +9,7 @@ export interface State {
   expirationMonth: ValidationField
   expirationYear: ValidationField
   cvc: ValidationField
+  isStateValid: boolean
 }
 
 export function UseCardState() {
@@ -27,7 +28,8 @@ export function UseCardState() {
       error: '',
       value: ''
     },
-    cvc: { name: 'cvc', isValid: true, error: '', value: '' }
+    cvc: { name: 'cvc', isValid: true, error: '', value: '' },
+    isStateValid: false
   })
 
   const onChange = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -49,7 +51,20 @@ export function UseCardState() {
     validateExpirationMonth()
     validateExpirationYear()
     validateCvc()
+
+    dispatch((prevState) => ({
+      ...prevState,
+      // prevState.name.isValid &&
+      // prevState.cardNumber.isValid &&
+      // prevState.expirationMonth.isValid &&
+      // prevState.expirationYear.isValid &&
+      // prevState.cvc.isValid
+      isStateValid: !fields.some(
+        (x) => (prevState[x as StateKey] as ValidationField).isValid === false
+      )
+    }))
   }
+
   const setValidation = (key: StateKey, isValid: boolean, error: string) => {
     dispatch((prevState) => ({
       ...prevState,
@@ -65,6 +80,9 @@ export function UseCardState() {
     event.preventDefault()
     const key = 'cardNumber'
     const { value } = event.target
+
+    // maxlength === 20 chars
+    if (value.length > 19) return
 
     dispatch((prevState) => ({
       ...prevState,

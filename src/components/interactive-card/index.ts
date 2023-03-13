@@ -1,2 +1,5 @@
 export * from './interactive-card'
 export * from './interactive-card-form'
+export * from './interactive-card-front'
+export * from './interactive-card-back'
+export * from './interactive-card-confirm'
